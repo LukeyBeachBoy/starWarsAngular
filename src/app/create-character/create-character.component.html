@@ -1,0 +1,17 @@
+<form name="myForm" (ngSubmit)="onSubmit(form)" class="mx-auto" #form="ngForm">
+  <div class="form-group" id="name">
+    <label for="name">Character Name</label>
+    <input type="text" id="name" name="name" class="form-control" ngModel required #nameCtrl="ngModel">
+    <span *ngIf="nameCtrl.invalid && nameCtrl.touched" class="help-block">Please enter a name!</span>
+  </div>
+  <div class="form-group" id="side">
+    <label for="side">Choose Side</label>
+    <select name="side" id="side" class="form-control" ngModel>
+      <option *ngFor="let option of availableSides" [value]="option.value">
+        {{ option.display }}
+      </option>
+    </select>
+    <button class="btn btn-primary" [ngClass]="{'disabled': form.invalid}" type="submit">Create
+      Character</button>
+  </div>
+</form>
